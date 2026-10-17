@@ -1,0 +1,14 @@
+The LEGB Rule in Python
+This section explores how Python searches for variables and resolves names using the LEGB rule.
+Concepts Covered
+Local scope
+Enclosing scope
+Global scope
+Built-in scope
+Variable name resolution
+Objective
+Understand how Python determines which variable to use when the same name exists in different scopes.
+Practice File
+legb_rule.py
+Key Takeaway
+Python searches for names in this order: Local → Enclosing → Global → Built-in.
