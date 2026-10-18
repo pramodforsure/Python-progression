@@ -1,0 +1,13 @@
+Enclosing Scope and Nested Functions
+This section explores nested functions and how inner functions access variables defined in their enclosing functions.
+Concepts Covered
+Nested functions
+Enclosing scope
+Accessing variables from outer functions
+Scope relationships between functions
+Objective
+Understand how variables in an outer function can be accessed by an inner function.
+Practice File
+enclosing_scope.py
+Key Takeaway
+An inner function can access variables from its enclosing function without declaring them as global.
