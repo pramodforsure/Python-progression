@@ -1,0 +1,14 @@
+The global and nonlocal Keywords
+This section examines how Python allows functions to reassign variables in different scopes.
+Concepts Covered
+The global keyword
+The nonlocal keyword
+Reassigning global variables
+Modifying enclosing-scope variables
+Using parameters and return values as alternatives
+Objective
+Understand how global and nonlocal affect variable assignment and why parameters and return values are often easier to maintain.
+Practice File
+global_and_nonlocal.py
+Key Takeaway
+global refers to a module-level name, while nonlocal refers to a name in an enclosing function scope.
