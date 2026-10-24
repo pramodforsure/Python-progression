@@ -1,0 +1,16 @@
+Built-in Names and Name Shadowing
+This section explores Python's built-in functions and the importance of choosing appropriate variable names.
+Concepts Covered
+Built-in functions
+len()
+sum()
+max()
+min()
+Name shadowing
+Naming best practices
+Objective
+Learn how to use built-in functions and avoid accidentally hiding them with variable names.
+Practice File
+builtins_and_shadowing.py
+Key Takeaway
+Avoid using built-in names such as list, str, and sum as variable names because doing so can hide their original functionality.
