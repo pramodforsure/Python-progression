@@ -1,0 +1,16 @@
+Python Lists — Fundamentals
+This section introduces lists, one of Python's fundamental data structures.
+Concepts Covered
+Creating lists
+Accessing elements using indexes
+Positive and negative indexing
+Adding elements with append()
+Updating list elements
+Finding list length with len()
+List mutability
+Objective
+Understand how to store, access, and modify multiple values using Python lists.
+Practice File
+lists_fundamentals.py
+Key Takeaway
+Lists are ordered, mutable collections that can store multiple values. Indexing starts at 0, and negative indexes access elements from the end.
