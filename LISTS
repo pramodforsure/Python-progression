@@ -1,0 +1,43 @@
+LIST
+A list is an ordered, mutable collection of elements in Python.
+•	Ordered: Elements maintain their positions.
+•	Mutable: You can modify a list after creating it.
+•	Collection: A list can contain multiple elements.
+Important: Python indexing starts at 0, not 1.
+Lists are mutable.
+. Adding Elements to Lists
+Python provides three important methods.
+A. append()
+Adds an element to the end.
+B. insert()
+Adds an element at a specified index.
+C. extend()
+Adds multiple elements from another iterable.
+append() adds one object.
+extend() adds elements individually from an iterable.
+Removing Elements
+Three methods are particularly useful.
+remove()
+Removes the first matching value.
+pop()
+Removes an element using its index and returns that element.
+del
+Deletes an element or a slice.
+Method	Purpose
+append()	Adds one element
+extend()	Adds multiple elements
+insert()	Inserts at an index
+remove()	Removes a matching value
+pop()	Removes and returns an element
+clear()	Removes all elements
+index()	Finds the first matching index
+count()	Counts occurrences
+sort()	Sorts the list in place
+reverse()	Reverses the list in place
+copy()	Creates a shallow copy
+Function	Purpose
+max()	Finds the largest element
+min()	Finds the smallest element
+sum()	Calculates the total
+len()	Counts elements
+sorted()	Returns a sorted list
