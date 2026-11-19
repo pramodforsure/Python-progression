@@ -1,0 +1,40 @@
+1. What is a Nested List?
+A nested list is simply a list inside another list.
+Why are nested lists useful?
+They are useful when dealing with:
+•	Student records.
+•	Matrices.
+•	Tabular data.
+•	Game boards.
+•	Two-dimensional data.
+Nested indexing works from the outside inward.
+Just like normal lists, nested lists are mutable.
+How do we print every student's information without manually accessing each student?
+We use loops.
+
+The loop accesses each inner list individually.
+We can also use a loop inside another loop.
+1. What is List Comprehension?
+List comprehension provides a concise way to create new lists from existing iterables.
+Understanding the Syntax
+General syntax:
+new_list = [expression for item in iterable]
+Component	Meaning
+expression	What you want to store
+item	Variable representing each element
+iterable	Collection being processed
+Another syntax
+[expression for item in iterable if condition]
+Execution:
+1.	Take an element.
+2.	Check the condition.
+3.	If the condition is true, include the element.
+4.	Otherwise, ignore it.
+
+The expression num determines what gets added to the resulting list.
+Important: Don't sacrifice readability just to write fewer lines. Nested comprehensions can become difficult to understand when they get complicated.
+Traditional Loops	List Comprehensions
+More explicit	More concise
+Easier for complex logic	Excellent for simple transformations
+Multiple lines	Often one line
+Good for debugging complex operations	Good for readable data processing
