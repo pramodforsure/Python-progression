@@ -30,9 +30,9 @@ Rather than simply memorizing syntax, I focus on understanding concepts, writing
 | 03 | Conditional Statements | ✅ Completed |
 | 04 | Loops & Iterations | ✅ Completed |
 | 05 | Functions & Parameters | ✅ Completed |
-| 06 | Lists & List Operations | ✅ In Progress |
-| 07 | Tuples & Sets | ⏳ Upcoming |
-| 08 | Dictionaries | ⏳ Upcoming |
+| 06 | Lists & List Operations | ✅ Completed |
+| 07 | Tuples & Sets |✅ Completed |
+| 08 | Dictionaries | In Progress |
 | 09 | Strings & Advanced Operations | ⏳ Upcoming |
 | 10 | Object-Oriented Programming | ⏳ Upcoming |
 | 11 | Exception Handling | ⏳ Upcoming |
