@@ -1,0 +1,282 @@
+#day_3
+Python Tuples & Sets
+What if you want to store data that shouldn't change? What if you want to eliminate duplicate values automatically?
+Python provides two data structures for these situations:
+•	Tuples: Ordered, immutable collections.
+•	Sets: Unordered collections of unique elements.
+1. What is a Tuple?
+A tuple is an ordered, immutable collection of elements.
+•	Lists use square brackets [].
+•	Tuples generally use parentheses ().
+Property	Tuple
+Ordered	Yes
+Mutable	No
+Allows duplicates	Yes
+Allows different data types	Yes
+Supports indexing	Yes
+Supports slicing	Yes
+Why do tuples exist?
+Imagine storing a student's date of birth.
+dob = (15, 8, 2007)
+You generally don't want this information accidentally modified throughout your program.
+A tuple communicates that the collection is intended to remain unchanged.
+Developer insight: Immutability helps make data handling more predictable. However, remember that a tuple can contain mutable objects, which we'll examine later.
+Accessing Tuple Elements
+Tuple indexing works exactly like list indexing.
+Negative indexing also works.
+Element	Index	Negative Index
+Python	0	-4
+Java	1	-3
+C++	2	-2
+JavaScript	3	-1
+3. Tuple Slicing
+Slicing works just like lists.
+numbers=(10,20,30,40,50,60)
+print(numbers[1:4])
+print(numbers[:3])
+print(numbers[::-1])
+Output:
+(20, 30, 40)
+(10, 20, 30)
+(60, 50, 40, 30, 20, 10)
+The slicing syntax remains:
+tuple_name[start:end:step]
+	
+4. Tuple Immutability
+This is the most important property of tuples.
+Because tuples are immutable.
+Once created, their element references cannot be reassigned through tuple indexing.
+But can we modify a tuple indirectly?
+Consider this:
+numbers = (10, 20, 30)numbers = (40, 50, 60)print(numbers)
+Output:
+(40, 50, 60)
+Why did this work?
+Because we didn't modify the original tuple.
+We created a new tuple and assigned it to the variable numbers.
+•	Modifying an existing tuple: Not allowed.
+•	Reassigning a variable to another tuple: Allowed.
+Method	Purpose
+count()	Counts occurrences of an element
+index()	Returns the first occurrence's index
+Example:
+numbers = (10, 20, 30, 20, 40, 20)
+
+print(numbers.count(20))
+print(numbers.index(30))
+output:
+3
+2
+TUPLE UNPACKING
+This is a very useful Python feature.
+Consider:
+student = ("Pramod", 18, "CSE")
+You want to extract each value into a separate variable.
+Traditional approach:
+name = student[0]
+age = student[1]
+branch = student[2]
+But Python offers a cleaner approach.
+Tuple Unpacking
+student = ("Pramod", 18, "CSE")
+name, age, branch = student
+print(name)
+print(age)
+print(branch)
+Output:
+Pramod
+18
+CSE
+Python automatically assigns the tuple elements to the corresponding variables.
+Important: Number of Variables
+This works:
+a, b, c = (10, 20, 30)
+This raises an error:
+a, b = (10, 20, 30)
+Why?
+Because there are three values but only two variables.
+Extended Unpacking
+Python also supports the * operator.
+numbers = (10, 20, 30, 40, 50)
+first, *middle, last = numbers
+print(first)
+print(middle)
+print(last)
+Output:
+10
+[20, 30, 40]
+50
+Notice something interesting:
+middle becomes a list, even though the original collection was a tuple.
+SETS
+Now let's explore another important data structure.
+7. What is a Set?
+A set is an unordered collection of unique elements.
+Example:
+numbers = {10, 20, 30, 40}
+print(numbers)
+Output:
+{10, 20, 30, 40}
+Now consider:
+numbers = {10, 20, 30, 10, 20, 40}
+print(numbers)
+Output:
+{10, 20, 30, 40}
+Notice that duplicate values disappeared.
+Sets automatically maintain unique elements.
+Characteristics of Sets
+Property	Set
+Ordered	No
+Mutable	Yes
+Allows duplicates	No
+Supports indexing	No
+Supports slicing	No
+Allows immutable elements	Yes
+Sets are useful for:
+•	Removing duplicates.
+•	Finding common elements.
+•	Comparing collections.
+•	Membership testing.
+•	Mathematical set operations.
+
+Creating Sets
+There are two common approaches.
+Using curly braces:
+numbers = {10, 20, 30}
+Using the set() constructor:
+numbers = set([10, 20, 30])
+Both create sets.
+Important: Empty Sets
+Consider:
+a = {}
+print(type(a))
+Output:
+<class 'dict'>
+Why?
+Because {} creates an empty dictionary, not a set.
+To create an empty set:
+a = set()
+print(type(a))
+Output:
+<class 'set'>
+Remember this distinction.
+
+9. Adding Elements
+Use add() to insert an element.
+numbers = {10, 20, 30} 
+numbers.add(40)
+print(numbers)
+Output:
+{10, 20, 30, 40}
+Adding an existing element doesn't create a duplicate.
+numbers.add(20)
+print(numbers)
+The set remains unchanged.
+Adding Multiple Elements
+Use update().
+numbers = {10, 20, 30}
+numbers.update([40, 50, 60])
+print(numbers)
+Output:
+{10, 20, 30, 40, 50, 60}
+Method	Behaviour
+remove()	Removes an element; raises KeyError if absent
+discard()	Removes an element; does nothing if absent
+pop()	Removes and returns an arbitrary element
+clear()	Removes all elements
+MATHEMATICAL SET OPERATIONS
+This is where sets become particularly powerful.
+Imagine two students have different programming language interests.
+student_A = {"Python", "Java", "C++"}
+student_B = {"Python", "JavaScript", "C++"}
+We want to compare their interests.
+Mathematical set operations make this easy.
+11. Union
+Union combines all unique elements from both sets.
+Mathematical notation: A ∪ B
+Python:
+result = student_A.union(student_B)
+print(result)
+Output (order may vary):
+{'Python', 'Java', 'C++', 'JavaScript'}
+You can also use:
+result = student_A | student_B
+Intersection
+Intersection returns elements common to both sets.
+Mathematical notation: A ∩ B
+Python:
+result = student_A.intersection(student_B)
+print(result)
+Output:
+{'Python', 'C++'}
+You can also use:
+result = student_A & student_B
+________________________________________
+13. Difference
+Difference returns elements present in the first set but absent from the second.
+Mathematical notation: A − B
+Python:
+result = student_A.difference(student_B)
+print(result)
+Output:
+{'Java'}
+You can also use:
+result = student_A - student_B
+Important:
+student_A - student_B
+is not necessarily equal to:
+student_B - student_A
+Difference is directional.
+Symmetric Difference
+This returns elements that exist in either set, but not both.
+Mathematical notation: A △ B
+Python:
+result = student_A.symmetric_difference(student_B)
+print(result)
+Output:
+{'Java', 'JavaScript'}
+You can also use:
+result = student_A ^ student_B
+Quick Comparison
+Operation	Meaning	Operator
+Union	All unique elements	|
+Intersection	Common elements	&
+Difference	Elements only in first set	-
+Symmetric Difference	Elements in either, but not both	^
+FROZEN SETS
+15. What is a Frozen Set?
+A frozen set is an immutable version of a set.
+Example:
+numbers = frozenset([10, 20, 30, 40])
+print(numbers)
+You can perform operations such as:
+print(numbers.union({50, 60}))
+print(numbers.intersection({20, 30, 50}))
+But you cannot add or remove elements from the original frozen set.
+numbers.add(50)
+This raises an AttributeError.
+Set vs Frozen Set
+Feature	Set	Frozen Set
+Mutable	Yes	No
+Duplicates	Not allowed	Not allowed
+Union	Yes	Yes
+Intersection	Yes	Yes
+Add elements	Yes	No
+Remove elements	Yes	No
+Hashable	No	Yes
+Why does hashability matter?
+Frozen sets can be used as dictionary keys or as elements of other sets. Regular mutable sets cannot.
+WHICH DATA STRUCTURE SHOULD YOU USE?
+This is a decision-making skill you'll use throughout your programming career.
+Requirement	Best Choice
+Store an ordered, changeable collection	List
+Store an ordered, immutable collection	Tuple
+Store unique elements	Set
+Store unique, immutable elements	Frozen Set
+Example:
+subjects = ["Python", "DBMS", "Python"]
+Use a list when duplicates and order matter.
+subjects = ("Python", "DBMS", "Python")
+Use a tuple when the collection should remain unchanged.
+subjects = {"Python", "DBMS"}
+Use a set when you only need unique elements.
