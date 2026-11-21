@@ -1,0 +1,203 @@
+Python Dictionaries
+Today we're moving to one of Python's most important data structures: Dictionaries (dict).
+Lists store data using indexes. Tuples store ordered, immutable data. Sets store unique elements.
+But what if you want to store information using meaningful labels instead of numerical indexes?
+That's where dictionaries come in.
+1. What is a Dictionary?
+A dictionary is a collection of key-value pairs.
+Example:
+student = {
+    "name": "Pramod",
+    "age": 18,
+    "branch": "CSE",
+    "cgpa": 8.5
+}
+Here
+Key	Value
+"name"	"Pramod"
+"age"	18
+"branch"	"CSE"
+"cgpa"	8.5
+Think of it this way:
+•	Key: The label used to identify information.
+•	Value: The actual information stored.
+Important properties
+1.	Dictionaries are mutable.
+2.	Keys must be unique.
+3.	Values can be duplicated.
+4.	Keys must be hashable (strings, numbers, tuples containing hashable elements, etc.).
+5.	Dictionaries preserve insertion order.
+Accessing Dictionary Elements
+Unlike lists, dictionaries don't use numerical indexes to retrieve values. They use keys.
+Example:
+student = {
+    "name": "Pramod",
+    "age": 18,
+    "branch": "CSE"
+}
+
+print(student["name"])
+print(student["age"])
+output:
+Pramod
+18
+What happens if a key doesn't exist?
+print(student["cgpa"])
+output:
+KeyError: 'cgpa'
+Python raises a KeyError because the requested key doesn't exist.
+The get() method
+A safer way to access dictionary values:
+print(student.get("cgpa"))
+output:
+None
+You can also specify a default value:
+print(student.get("cgpa", "Not available"))
+output:
+Not available
+Method	Missing key
+student["cgpa"]	Raises KeyError
+student.get("cgpa")	Returns None
+student.get("cgpa", 0)	Returns 0
+Adding and Updating Elements
+Dictionaries are mutable, so you can modify them after creation.
+Adding a new key-value pair
+student = {
+    "name": "Pramod",
+    "age": 18
+}
+
+student["cgpa"] = 8.5
+
+print(student)
+Updating an existing value
+student["age"] = 19
+
+print(student)
+Using update()
+You can update multiple values simultaneously.
+student.update({
+    "age": 20,
+    "branch": "CSE",
+    "cgpa": 9.0
+})
+
+print(student)
+If a key exists, its value is updated. Otherwise, a new key-value pair is added.
+4. Removing Elements
+Python provides several methods to remove dictionary elements.
+pop()
+Removes a specified key and returns its value.
+Example:
+student = {
+    "name": "Pramod",
+    "age": 18,
+    "cgpa": 8.5
+}
+
+result = student.pop("age")
+
+print(result)
+print(student)
+output:
+18
+{'name': 'Pramod', 'cgpa': 8.5}
+popitem()
+Removes and returns the last inserted key-value pair.
+student.popitem()
+del
+Deletes a specific key.
+del student["cgpa"]
+clear()
+Removes everything.
+student.clear()
+print(student)
+Output:
+{}
+Important Dictionary Methods
+These methods are essential.
+student = {
+    "name": "Pramod",
+    "age": 18,
+    "branch": "CSE"
+}
+Method	Purpose
+student.keys()	Returns all keys
+student.values()	Returns all values
+student.items()	Returns key-value pairs
+student.get("name")	Retrieves a value safely
+student.update()	Adds or updates elements
+student.pop("age")	Removes a specified key
+student.popitem()	Removes the last inserted pair
+student.copy()	Creates a shallow copy
+student.clear()	Removes all elements
+Understanding keys(), values() and items()
+Example:
+print(student.keys())
+print(student.values())
+print(student.items())
+output:
+dict_keys(['name', 'age', 'branch'])
+dict_values(['Pramod', 18, 'CSE'])
+dict_items([('name', 'Pramod'), ('age', 18), ('branch', 'CSE')])
+Iterating Through Dictionaries
+There are three common ways.
+Method 1: Iterate through keys
+for key in student:
+    print(key)
+Method 2: Iterate through values
+for value in student.values():
+    print(value)
+Method 3: Iterate through key-value pairs
+This is particularly important.
+for key, value in student.items():
+    print(key, ":", value)
+output:
+name : Pramod
+age : 18
+branch : CSE
+Notice this:
+for key, value in student.items():
+Python automatically unpacks each key-value pair into two variables.
+Nested Dictionaries
+A dictionary can contain another dictionary.
+students = {
+    "student1": {
+        "name": "Pramod",
+        "cgpa": 8.5
+    },
+
+    "student2": {
+        "name": "Rahul",
+        "cgpa": 9.0
+    }
+}
+Accessing nested values:
+print(students["student1"]["name"])
+print(students["student2"]["cgpa"])
+Output:
+Pramod
+9.0
+This structure is extremely useful when working with APIs, JSON data and databases.
+Dictionary Comprehension
+Just like list comprehension, Python supports dictionary comprehension.
+Example:
+numbers = [1, 2, 3, 4, 5]
+
+squares = {num: num**2 for num in numbers}
+
+print(squares)
+output:
+{1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+Syntax:
+{key_expression: value_expression for item in iterable}
+With a condition:
+even_squares = {
+    num: num**2
+    for num in range(1, 11)
+    if num % 2 == 0
+}
+
+print(even_squares)
+Output:
+{2: 4, 4: 16, 6: 36, 8: 64, 10: 100}
