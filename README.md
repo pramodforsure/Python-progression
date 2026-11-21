@@ -32,8 +32,8 @@ Rather than simply memorizing syntax, I focus on understanding concepts, writing
 | 05 | Functions & Parameters | ✅ Completed |
 | 06 | Lists & List Operations | ✅ Completed |
 | 07 | Tuples & Sets |✅ Completed |
-| 08 | Dictionaries | In Progress |
-| 09 | Strings & Advanced Operations | ⏳ Upcoming |
+| 08 | Dictionaries | ✅ Completed |
+| 09 | Strings & Advanced Operations | In Progress |
 | 10 | Object-Oriented Programming | ⏳ Upcoming |
 | 11 | Exception Handling | ⏳ Upcoming |
 | 12 | File Handling | ⏳ Upcoming |
