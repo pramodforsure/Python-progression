@@ -1,0 +1,192 @@
+Today we're going deeper into strings. Strings are everywhere in software development: usernames, passwords, API responses, JSON data, logs, search engines and text processing.
+1. Understanding String Immutability
+A string is an immutable sequence of characters.
+Immutable means you cannot change individual characters after creating a string.
+name = "Python"
+
+name[0] = "J"  # TypeError
+Why?
+Because Python doesn't allow direct modification of an existing string.
+How do we modify strings, then?
+We create a new string.
+name = "Python"
+
+name = "J" + name[1:]
+
+print(name)
+output:
+Jython
+Notice the distinction:
+•	We didn't modify the original string.
+•	We created a new string and assigned it to name.
+This is an important concept when understanding Python's object model.
+2. String Indexing and Slicing
+Strings behave similarly to lists when accessing characters.
+language = "Python"
+Character	P	y	t	h	o	n
+Positive index	0	1	2	3	4	5
+Negative index	-6	-5	-4	-3	-2	-1
+Examples:
+print(language[0])     # P
+print(language[-1])    # n
+print(language[1:4])   # yth
+print(language[::-1])  # nohtyP
+Slicing syntax:
+string[start:end:step]
+Remember:
+•	start is included.
+•	end is excluded.
+•	step determines the interval.
+3. Important String Methods
+Python provides several built-in methods for processing strings.
+Let's examine the ones you'll use frequently.
+Case conversion
+text = "hello python"
+
+print(text.upper())
+print(text.lower())
+print(text.title())
+print(text.capitalize())
+print(text.swapcase())
+output:
+HELLO PYTHON
+hello python
+Hello Python
+Hello python
+HELLO PYTHON    
+Method	Function
+strip()	Removes whitespace from both ends
+lstrip()	Removes whitespace from the left
+rstrip()	Removes whitespace from the right
+Searching and replacing
+text = "I love Java"
+
+print(text.find("Java"))
+print(text.count("a"))
+print(text.replace("Java", "Python"))
+output:
+7
+2
+I love Python
+find() returns the starting index of the first occurrence. If the substring isn't found, it returns -1.
+index() is similar, but raises ValueError when the substring isn't found.
+4. Checking String Content
+Python has methods that help determine what kind of characters a string contains.
+text = "Python123"
+
+print(text.isalpha())
+print(text.isdigit())
+print(text.isalnum())
+output:
+False
+False
+True
+Why?
+•	isalpha() → All characters must be alphabetic.
+•	isdigit() → All characters must be digits.
+•	isalnum() → All characters must be alphabetic or numeric.
+Other useful methods:
+Method	Checks
+islower()	All cased letters are lowercase
+isupper()	All cased letters are uppercase
+isspace()	All characters are whitespace
+istitle()	String follows title-case rules
+startswith()	String begins with specified text
+endswith()	String ends with specified text
+email = "student@gmail.com"
+print(email.startswith("student"))
+print(email.endswith(".com"))
+               both return true
+5. The split() Method
+This is particularly important when processing user input and text files.
+split() converts a string into a list.
+sentence = "Python is powerful"
+
+words = sentence.split()
+
+print(words)
+output:
+['Python', 'is', 'powerful']
+You can specify a separator:
+data = "Pramod,18,CSE,8.5"
+
+result = data.split(",")
+
+print(result)
+output:
+['Pramod', '18', 'CSE', '8.5']
+6. The join() Method
+join() does the opposite of split().
+It combines strings from an iterable into a single string.
+words = ["Python", "is", "powerful"]
+
+sentence = " ".join(words)
+
+print(sentence)
+output:
+Python is powerful
+Other examples:
+words = ["2026", "11", "22"]
+
+print("-".join(words))
+print("".join(words))
+print("/".join(words))
+output:
+2026-11-22
+20261122
+2026/11/22
+Split vs Join
+split()	join()
+String → List	Iterable of strings → String
+Breaks text apart	Combines text
+"a,b".split(",")	",".join(["a","b"])
+7. String Formatting — F-Strings
+name = "Pramod"
+age = 18
+cgpa = 8.5678
+
+print(f"My name is {name}.")
+print(f"I am {age} years old.")
+print(f"My CGPA is {cgpa:.2f}.")
+output:
+My name is Pramod.
+I am 18 years old.
+My CGPA is 8.57.
+ The expression {cgpa:.2f} formats the number to two decimal places.
+More examples:
+number = 1250000
+
+print(f"{number:,}")
+print(f"{number:010}")
+print(f"{12.5:.1f}")
+output:
+1,250,000
+0001250000
+12.5
+8. Character Frequency — An Important Problem-Solving Concept
+Suppose you have:
+text = "banana"
+You want to count how many times each character appears.
+One way is to use a dictionary.
+text = "banana"
+
+frequency = {}
+
+for char in text:
+    if char in frequency:
+        frequency[char] += 1
+    else:
+        frequency[char] = 1
+
+print(frequency)
+Output:
+{'b': 1, 'a': 3, 'n': 2}
+Let's understand the logic:
+1.	Start with an empty dictionary.
+2.	Visit each character.
+3.	Check whether the character already exists.
+4.	If it exists, increase its count.
+5.	Otherwise, create it with a count of 1.
+This pattern is useful in text analytics, data processing and algorithmic problem-solving.
+
+
