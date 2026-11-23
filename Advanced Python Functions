@@ -1,0 +1,264 @@
+DAY 6 — Advanced Python Functions
+Time to move beyond basic functions.
+You've already learned how to define functions, pass arguments, use default parameters and return values.
+Today, we'll understand how Python handles arguments, variables, and functions internally.
+These concepts separate someone who can write Python syntax from someone who can design reliable Python programs.
+________________________________________
+1. Positional Arguments vs Keyword Arguments
+Consider this function:
+def student(name, age, branch):    
+print(name)
+print(age)    
+print(branch)
+Positional arguments
+Values are assigned according to their position.
+student("Pramod", 18, "CSE")
+Output:
+Pramod
+18
+CSE
+Python matches:
+•	First argument → name
+•	Second argument → age
+•	Third argument → branch
+Keyword arguments
+You explicitly specify parameter names.
+student(branch="CSE", name="Pramod", age=18)
+Output remains the same.
+Why are keyword arguments useful?
+They improve readability and allow you to specify arguments in a different order.
+________________________________________
+2. Default Arguments
+A default argument provides a value when the caller doesn't supply one.
+def greet(name, message="Welcome"):    
+    print(f"{message}, {name}!")
+greet("Pramod")
+greet("Rahul", "Good morning")
+Output:
+Welcome, Pramod!
+Good morning, Rahul!
+Important rule:
+Parameters with default values must generally come after parameters without default values.
+Valid:
+def calculate(a, b=10):    
+    return a + b
+Invalid:
+def calculate(a=10, b):
+    return a + b
+The second definition raises a SyntaxError.
+________________________________________
+3. *args — Variable Positional Arguments
+Suppose you want a function that accepts any number of numbers.
+Without *args, you might write:
+def add(a, b, c):
+    return a + b + c
+But what if you want to add five or ten numbers?
+Use *args.
+def add(*args):
+    print(args)    
+return sum(args)
+print(add(10, 20))
+print(add(10, 20, 30, 40))
+print(add(1, 2, 3, 4, 5, 6))
+Output:
+(10, 20)
+60
+(10, 20, 30, 40)
+100
+(1, 2, 3, 4, 5, 6)
+21
+What happens internally?
+*args collects additional positional arguments into a tuple.
+This means:
+def example(*args):
+    print(type(args))
+Output:
+<class 'tuple'>
+Important: args is just a conventional name. You could call it something else, but args is the standard practice.
+________________________________________
+4. **kwargs — Variable Keyword Arguments
+What if you want to accept an arbitrary number of named arguments?
+Use **kwargs.
+def student_profile(**kwargs):
+    print(kwargs)
+student_profile(
+    name="Pramod",
+    age=18,
+    branch="CSE",
+    cgpa=8.5
+)
+Output:
+{ 
+   'name': 'Pramod',
+    'age': 18,
+    'branch': 'CSE',
+    'cgpa': 8.5
+}
+What happens internally?
+**kwargs collects keyword arguments into a dictionary.
+Example:
+def student_profile(**kwargs):
+    for key, value in kwargs.items():
+        print(key, ":", value)
+*args vs **kwargs
+Feature	*args	**kwargs
+Accepts	Positional arguments	Keyword arguments
+Stores data as	Tuple	Dictionary
+Example	add(10, 20)	name="Pramod"
+________________________________________
+5. Combining Arguments
+You can combine different argument types in one function.
+def student(name, *subjects, **details):
+    print("Name:", name)
+    print("Subjects:", subjects)
+    print("Details:", details)
+student( 
+   "Pramod", 
+   "Python",
+    "DBMS", 
+   "DSA",
+    age=18,
+    branch="CSE"
+)
+Output:
+Name: Pramod
+Subjects: ('Python', 'DBMS', 'DSA')
+Details: {'age': 18, 'branch': 'CSE'}
+The parameters are collected in this order:
+1.	name receives the first positional argument.
+2.	*subjects collects remaining positional arguments.
+3.	**details collects keyword arguments.
+4.	________________________________________
+6. Scope and Namespaces
+This is one of the most important concepts today.
+Scope determines where a variable can be accessed.
+Consider:
+x = 100
+
+def example():
+    x = 50
+    print(x)
+
+example()
+print(x)
+output:
+50
+100
+Why?
+There are two different variables named x:
+•	Global x → 100
+•	Local x → 50
+The local variable doesn't overwrite the global variable.
+Local scope
+Variables created inside a function are generally local to that function.
+def calculate():
+    result = 100
+    print(result)
+
+calculate()
+Trying to access result outside the function causes a NameError.
+Global scope
+Variables defined at the module level can generally be accessed throughout that module.
+name = "Pramod"
+
+def greet():
+    print(name)
+
+greet()
+output:
+Pramod
+The global keyword
+What if you actually want to modify a global variable?
+count = 10
+
+def update():
+    global count
+    count = 20
+
+update()
+
+print(count)
+output:
+20
+global tells Python that you're referring to the module-level variable.
+Development advice: Avoid using global variables unnecessarily. Passing values through function parameters and returning results usually produces more maintainable code.
+________________________________________
+7. Lambda Functions
+A lambda is a small anonymous function.
+Normal function:
+def square(x):
+    return x ** 2
+
+print(square(5))
+Equivalent lambda:
+square = lambda x: x ** 2
+
+print(square(5))
+Output:
+25
+Syntax:
+lambda arguments: expression
+more examples:
+add = lambda a, b: a + b
+multiply = lambda a, b: a * b
+
+print(add(10, 20))
+print(multiply(5, 4))
+Output:
+30
+20
+Lambda functions are useful for short expressions, particularly when working with map(), filter() and sorting.
+Don't use them for complicated logic. A regular function is usually clearer.
+________________________________________
+8. map() — Transforming Data
+map() applies a function to every element in an iterable.
+Example:
+numbers = [1, 2, 3, 4, 5]
+
+result = map(lambda x: x ** 2, numbers)
+
+print(list(result))
+Output:
+[1, 4, 9, 16, 25]
+Think of it this way:
+•	Take an element.
+•	Apply a function.
+•	Produce a transformed element.
+•	Repeat for the remaining elements.
+Important: In Python 3, map() returns an iterator, so we convert it to a list here to display all results.
+________________________________________
+9. filter() — Filtering Data
+filter() selects elements based on a condition.
+Example:
+numbers = [1, 2, 3, 4, 5, 6, 7, 8]
+
+result = filter(lambda x: x % 2 == 0, numbers)
+
+print(list(result))
+output:
+[2, 4, 6, 8]
+Difference:
+•	map() transforms elements.
+•	filter() selects elements that satisfy a condition.
+________________________________________
+10. reduce() — Combining Data
+reduce() repeatedly applies a function to combine elements into one result.
+It belongs to the functools module.
+from functools import reduce
+
+numbers = [1, 2, 3, 4, 5]
+
+result = reduce(lambda a, b: a + b, numbers)
+
+print(result)
+Output:
+15
+Conceptually:
+1 + 2 = 3
+3 + 3 = 6
+6 + 4 = 10
+10 + 5 = 15
+Function	Purpose	Result
+map()	Transform elements	Iterable
+filter()	Select elements	Iterable
+reduce()	Combine elements	Single result
